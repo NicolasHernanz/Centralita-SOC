@@ -411,7 +411,38 @@
                 </tbody>
             </table>
         </section>
+	<section id="osint">
+            <h2>Flujo de Investigación OSINT</h2>
+            <p style="margin-bottom:1.5rem; color:var(--text-muted);">Protocolo estándar para investigar una IP 		sospechosa sin cometer errores.</p>
+            
+            <div class="playbook-step">
+                <span class="step-title" style="color:var(--accent);">PASO 1: VALIDACIÓN Y REPUTACIÓN</span>
+                <p style="margin-bottom:0.5rem; font-size:0.9rem;">¿Es una amenaza conocida?</p>
+                <ul class="checkbox-list">
+                    <li>Copiar IP y buscar en <strong style="color:var(--text-main)">AbuseIPDB</strong>.</li>
+                    <li><strong>Si el "Confidence Score" es > 50%</strong>: Bloquear en Firewall 				inmediatamente.</li>
+                    <li>Si está limpia o duda, pasar al Paso 2.</li>
+                </ul>
+            </div>
 
+            <div class="playbook-step">
+                <span class="step-title" style="color:var(--accent);">PASO 2: PROPIEDAD (ISP/ASN)</span>
+                <p style="margin-bottom:0.5rem; font-size:0.9rem;">¿Quién es el dueño de la IP? (Usar <span class="code-snippet">IPinfo.io</span>)</p>
+                <ul class="checkbox-list">
+                    <li><strong>ISP Residencial</strong> (Movistar, Comcast): Posible botnet o usuario legítimo.</li>
+                    <li><strong>Hosting/Cloud</strong> (AWS, Azure, DigitalOcean): <strong style="color:var(--danger)">ALERTA ROJA</strong>. Nadie navega desde un Data Center. Es VPN o Proxy.</li>
+                </ul>
+            </div>
+
+            <div class="playbook-step">
+                <span class="step-title" style="color:var(--accent);">PASO 3: RELACIONES</span>
+                <p style="margin-bottom:0.5rem; font-size:0.9rem;">¿Qué ha tocado esa IP antes?</p>
+                <ul class="checkbox-list">
+                    <li>Buscar IP en <strong style="color:var(--text-main)">VirusTotal</strong> > Pestaña <em>Relations</em>.</li>
+                    <li>Si aparece "Communicating Files" con nombres de malware: <strong>Es un C2 (Command & Control).</strong></li>
+                </ul>
+            </div>
+        </section>
         <footer style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #334155; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
             <p>Field Guide mantenida por Nicolás | SysAdmin to SOC Journey</p>
         </footer>
