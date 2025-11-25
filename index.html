@@ -105,4 +105,336 @@
         .lvl-1 { background: #ef4444; color: white; width: 30%; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); padding-top: 20px; } 
         .lvl-2 { background: #f97316; width: 40%; } 
         .lvl-3 { background: #eab308; width: 50%; } 
-        .lvl-4 { background: #22d3ee; width: 6
+        .lvl-4 { background: #22d3ee; width: 60%; } 
+        .lvl-5 { background: #10b981; width: 70%; } 
+        .lvl-6 { background: #3b82f6; width: 80%; } 
+
+        /* --- TABLES --- */
+        table { width: 100%; border-collapse: collapse; background-color: var(--card-bg); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #334155; }
+        th { background-color: #0f172a; color: var(--accent); text-transform: uppercase; font-size: 0.85rem; }
+        .code-snippet { font-family: 'Courier New', monospace; background-color: #000; padding: 2px 6px; border-radius: 4px; color: var(--accent); font-size: 0.9rem; }
+
+        /* --- BUTTONS --- */
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 0.4rem 1rem; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; margin-top: 0.5rem; text-align: center; width: 100%;}
+        .btn:hover { background: var(--accent-hover); }
+
+        /* --- CHECKLISTS --- */
+        .check-list { list-style: none; padding-left: 0; }
+        .check-list li { margin-bottom: 0.8rem; display: flex; align-items: start; gap: 10px; }
+        .check-list li::before { content: "⬜"; font-size: 1rem; }
+        .playbook-step { background: rgba(6, 182, 212, 0.05); border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 1rem; }
+        .playbook-step.critical { border-left-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="profile-section">
+            <div class="profile-name">Nicolás</div>
+            <div class="profile-role">SysAdmin > SOC Analyst</div>
+        </div>
+        <nav>
+            <div class="nav-category">Guías de Herramientas</div>
+            <ul>
+                <li><a href="#defender">🛡️ Defender Live Response</a></li>
+                <li><a href="#cyberchef">🍳 CyberChef Recipes</a></li>
+                <li><a href="#wazuh">🐶 Wazuh / SIEM</a></li>
+                <li><a href="#anyrun">📦 Any.Run Sandbox</a></li>
+            </ul>
+
+            <div class="nav-category">Análisis y Triage</div>
+            <ul>
+                <li><a href="#log-analysis">📊 Técnica de Análisis</a></li>
+                <li><a href="#osint">🔍 Protocolo OSINT</a></li>
+                <li><a href="#playbooks">📖 Playbooks (SOPs)</a></li>
+            </ul>
+
+            <div class="nav-category">Teoría & Referencia</div>
+            <ul>
+                <li><a href="#cheatsheets">⚡ Cheat Sheets (Logs)</a></li>
+                <li><a href="#frameworks">Defense Frameworks</a></li>
+                <li><a href="#pyramid">🔺 Pirámide del Dolor</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        
+        <header>
+            <h1>SOC Analyst Bible <span style="font-size:0.5em; color:var(--accent);">v4.0 (Complete)</span></h1>
+            <p>Manual de procedimientos, comandos y guías de uso para operaciones de seguridad.</p>
+        </header>
+
+        <section id="defender">
+            <h2>🛡️ Microsoft Defender: Live Response</h2>
+            <p>Guía de comandos para investigar un equipo remoto sin interrumpir al usuario.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>1. Conectarse al Equipo</h4>
+                    <p class="instruction-step">1. Ve al portal de Defender (security.microsoft.com).</p>
+                    <p class="instruction-step">2. Busca el dispositivo y entra en su página.</p>
+                    <p class="instruction-step">3. Pulsa los tres puntos (...) y elige <strong>Initiate Live Response</strong>.</p>
+                    
+                    <h4>2. Comandos de Investigación</h4>
+                    <div class="manual-box">
+                        <p class="instruction-step"><strong>Ver procesos activos:</strong></p>
+                        <div class="cmd-block">processes</div>
+                        
+                        <p class="instruction-step"><strong>Ver conexiones de red (Netstat):</strong></p>
+                        <div class="cmd-block">netstat</div>
+                        
+                        <p class="instruction-step"><strong>Buscar un archivo sospechoso:</strong></p>
+                        <div class="cmd-block">findfile name="factura.exe"</div>
+                        
+                        <p class="instruction-step"><strong>Ver tareas programadas (Persistencia):</strong></p>
+                        <div class="cmd-block">scheduledtasks</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>3. Acciones de Remedición</h4>
+                    <div class="manual-box">
+                        <p class="instruction-step"><strong>Descargar archivo (Evidencia):</strong></p>
+                        <div class="cmd-block">getfile "C:\Users\User\Downloads\malware.exe"</div>
+                        
+                        <p class="instruction-step"><strong>Matar un proceso malicioso:</strong></p>
+                        <div class="cmd-block">kill [PID_del_proceso]</div>
+
+                        <p class="instruction-step"><strong>Borrar archivo y remediar:</strong></p>
+                        <div class="cmd-block">remediate file "C:\path\virus.exe"</div>
+                        
+                        <p class="instruction-step"><strong>Aislar dispositivo:</strong></p>
+                        <p style="font-size:0.9rem;">Usar botón "Isolate Device" en la interfaz principal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cyberchef">
+            <h2>🍳 CyberChef: Recetario</h2>
+            <p>Cómo decodificar texto ofuscado que encuentras en los logs.</p>
+            <a href="https://gchq.github.io/CyberChef/" target="_blank" class="btn">Abrir CyberChef</a>
+
+            <div class="grid-2" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h4>Caso A: PowerShell Base64</h4>
+                    <p>Si ves: <span class="code-snippet">powershell -e JABzAD0AbgBlAHcALQBv...</span></p>
+                    <div class="manual-box">
+                        <p class="instruction-step">1. Pega el texto raro en <strong>Input</strong>.</p>
+                        <p class="instruction-step">2. Busca operación: <strong style="color:var(--accent)">From Base64</strong>.</p>
+                        <p class="instruction-step">3. Arrástrala a "Recipe".</p>
+                        <p class="instruction-step">4. <strong>Tip:</strong> Si salen puntos (H.o.l.a), añade <strong style="color:var(--accent)">Remove Null Bytes</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Caso B: Sacar IPs de un log</h4>
+                    <p>Extraer IPs limpias de un texto gigante.</p>
+                    <div class="manual-box">
+                        <p class="instruction-step">1. Pega todo el log en <strong>Input</strong>.</p>
+                        <p class="instruction-step">2. Busca operación: <strong style="color:var(--accent)">Extract IP addresses</strong>.</p>
+                        <p class="instruction-step">3. Añade <strong style="color:var(--accent)">Defang IP Addresses</strong> si vas a reportarlo (1.1.1[.]1).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wazuh">
+            <h2>🐶 Wazuh / SIEM: Cheatsheet</h2>
+            <p>Queries básicas para buscar amenazas en la consola Discover.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th width="30%">Objetivo</th>
+                        <th>Query (Filtro)</th>
+                        <th>Explicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Alertas Críticas</strong></td>
+                        <td><span class="code-snippet">rule.level >= 12</span></td>
+                        <td>Muestra solo incidentes graves.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fuerza Bruta</strong></td>
+                        <td><span class="code-snippet">rule.id: (5710 OR 5716)</span></td>
+                        <td>Intentos fallidos de SSH/RDP.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Actividad de Usuario</strong></td>
+                        <td><span class="code-snippet">data.win.eventdata.targetUserName: "nicolas"</span></td>
+                        <td>Todo lo que hizo ese usuario.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PowerShell Script</strong></td>
+                        <td><span class="code-snippet">data.win.system.eventID: 4104</span></td>
+                        <td>Bloques de script ejecutados (si activaste GPO).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="log-analysis">
+            <h2>📊 Técnica: Cómo visualizar Logs</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>El Principio de "Least Frequency"</h4>
+                    <p>Los atacantes son la excepción. Para encontrar el mal:</p>
+                    <div class="manual-box">
+                        <p class="instruction-step">1. Agrupa eventos por <strong>"Event Name"</strong>.</p>
+                        <p class="instruction-step">2. Ordena por <strong>Count (Cantidad)</strong> de MENOR a MAYOR.</p>
+                        <p class="instruction-step">3. <strong>Ignora lo común</strong> (10,000 veces).</p>
+                        <p class="instruction-step">4. <strong>Investiga lo único</strong> (1 vez).</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Stacking (Apilar)</h4>
+                    <p>Busca lo que se sale del patrón.</p>
+                    <p>Si 299 usuarios usan <code>chrome.exe</code> y 1 usuario usa <code>chr0me.exe</code>, ahí tienes tu incidente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="anyrun">
+            <h2>📦 Análisis de Malware (Any.Run)</h2>
+            <a href="https://any.run/" target="_blank" class="btn">Abrir Any.Run</a>
+            <div class="manual-box">
+                <p class="instruction-step">1. <strong>New Task:</strong> Sube el archivo o URL.</p>
+                <p class="instruction-step">2. <strong>Interactúa:</strong> En la VM, haz clic en "Habilitar Contenido" si es un Excel.</p>
+                <p class="instruction-step">3. <strong>Analiza:</strong> Mira "HTTP Requests" (conexiones) y "Processes" (archivos creados).</p>
+            </div>
+        </section>
+
+        <section id="osint">
+            <h2>🔍 Protocolo de Investigación (OSINT)</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="step-title" style="color:var(--accent);">PASO 1: REPUTACIÓN</span>
+                    <p><strong>Herramienta:</strong> AbuseIPDB</p>
+                    <p>Si "Confidence Score" > 50% -> <strong style="color:var(--danger)">Bloqueo Inmediato</strong>.</p>
+                </div>
+                <div class="card">
+                    <span class="step-title" style="color:var(--accent);">PASO 2: PROPIEDAD</span>
+                    <p><strong>Herramienta:</strong> IPinfo.io</p>
+                    <p>¿Es AWS/Azure? -> <strong style="color:var(--warning)">ALERTA</strong> (VPN/Proxy).</p>
+                </div>
+                <div class="card">
+                    <span class="step-title" style="color:var(--accent);">PASO 3: RELACIONES</span>
+                    <p><strong>Herramienta:</strong> VirusTotal</p>
+                    <p>Pestaña 'Relations'. ¿Se conecta a ficheros Malware?</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="playbooks">
+            <h2>📖 Playbooks Operativos (SOP)</h2>
+            
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3 style="margin-top:0; color:var(--accent);">SOP-001: Malware / Ransomware</h3>
+                <div class="playbook-step critical">
+                    <span class="step-title">FASE DE CONTENCIÓN (NO APAGAR)</span>
+                    <ul class="check-list">
+                        <li><strong>NO APAGAR</strong> el equipo (Preservar RAM).</li>
+                        <li><strong>AISLAR</strong> red: Usar EDR "Isolate" o quitar cable.</li>
+                        <li>Desconectar discos USB/Backups externos.</li>
+                    </ul>
+                </div>
+                <div class="playbook-step">
+                    <span class="step-title">FASE DE ANÁLISIS</span>
+                    <ul class="check-list">
+                        <li>Obtener Hash: <span class="code-snippet">Get-FileHash mal.exe</span></li>
+                        <li>Buscar Hash en VirusTotal.</li>
+                        <li>Identificar "Paciente Cero".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-top:0; color:var(--accent);">SOP-002: Phishing Reportado</h3>
+                <div class="playbook-step">
+                    <span class="step-title">TRIAGE INICIAL</span>
+                    <ul class="check-list">
+                        <li>Analizar Cabeceras (MXToolbox).</li>
+                        <li>No abrir enlaces. Usar <strong>UrlScan.io</strong>.</li>
+                        <li>¿Usuario metió credenciales? -> <strong>Reset Password</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="cheatsheets">
+            <h2>⚡ Cheat Sheets (Logs)</h2>
+            <table>
+                <tr>
+                    <td><span class="code-snippet">4624</span></td>
+                    <td><strong>Logon Success</strong>. Revisar Logon Type (2=Físico, 10=RDP, 3=Red).</td>
+                </tr>
+                <tr>
+                    <td><span class="code-snippet">4625</span></td>
+                    <td><strong>Logon Failed</strong>. Picos altos = Fuerza Bruta.</td>
+                </tr>
+                <tr>
+                    <td><span class="code-snippet">4720</span></td>
+                    <td><strong>Usuario Creado</strong>. Crítico si no hay ticket autorizado.</td>
+                </tr>
+                <tr>
+                    <td><span class="code-snippet">4104</span></td>
+                    <td><strong>PowerShell Script</strong>. Ver código real ejecutado.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="frameworks">
+            <h2>🛡️ Frameworks & Teoría</h2>
+            
+            <h3>NIST CSF (Ciclo de Vida)</h3>
+            <table>
+                <tr>
+                    <th style="color:#3b82f6">IDENTIFY</th>
+                    <th style="color:#8b5cf6">PROTECT</th>
+                    <th style="color:#eab308">DETECT</th>
+                    <th style="color:#ef4444">RESPOND</th>
+                    <th style="color:#10b981">RECOVER</th>
+                </tr>
+                <tr>
+                    <td>Inventario</td>
+                    <td>Firewall/MFA</td>
+                    <td>SIEM/Logs</td>
+                    <td>Aislar/Analizar</td>
+                    <td>Restore</td>
+                </tr>
+            </table>
+
+            <h3 id="pyramid">🔺 Pirámide del Dolor</h3>
+            <div class="pyramid-container">
+                <div class="pyramid-level lvl-1">TTPs (Comportamiento)</div>
+                <div class="pyramid-level lvl-2">Tools</div>
+                <div class="pyramid-level lvl-3">Artifacts</div>
+                <div class="pyramid-level lvl-4">Domains</div>
+                <div class="pyramid-level lvl-5">IP Addresses</div>
+                <div class="pyramid-level lvl-6">Hash (Fácil)</div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="text-align: center; font-size: 0.8rem; margin-top: 5rem;">
+                SOC Field Manual maintained by Nicolás. <br>
+                v4.0 Complete Edition.
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
