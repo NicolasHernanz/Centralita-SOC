@@ -17,6 +17,7 @@
             --warning: #f59e0b; /* Orange */
             --success: #10b981; /* Green */
             --purple: #8b5cf6; /* Purple for Theory */
+            --code-bg: #000000;
         }
 
         * {
@@ -36,7 +37,7 @@
 
         /* --- SIDEBAR --- */
         .sidebar {
-            width: 260px;
+            width: 280px;
             height: 100vh;
             background-color: var(--sidebar-bg);
             padding: 2rem 1.5rem;
@@ -48,12 +49,7 @@
             z-index: 100;
         }
 
-        .profile-section {
-            margin-bottom: 2rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 1rem;
-        }
-
+        .profile-section { margin-bottom: 2rem; border-bottom: 1px solid #334155; padding-bottom: 1rem; }
         .profile-name { font-size: 1.4rem; font-weight: bold; color: var(--accent); }
         .profile-role { font-size: 0.85rem; color: var(--text-muted); }
 
@@ -68,124 +64,72 @@
             display: block;
             padding: 0.6rem;
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
-        nav a:hover, nav a.active {
-            color: #fff;
-            background-color: rgba(6, 182, 212, 0.15);
-            border-left: 3px solid var(--accent);
-        }
+        nav a:hover { color: #fff; background-color: rgba(6, 182, 212, 0.15); border-left: 3px solid var(--accent); }
 
         .nav-category {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b;
+            margin-top: 2rem; margin-bottom: 0.8rem; font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px;
         }
 
         /* --- MAIN CONTENT --- */
-        .main-content {
-            margin-left: 260px;
-            padding: 3rem 4rem;
-            width: 100%;
-            max-width: 1600px;
-        }
+        .main-content { margin-left: 280px; padding: 3rem 4rem; width: 100%; max-width: 1600px; }
 
         header { margin-bottom: 3rem; border-bottom: 1px solid #334155; padding-bottom: 1rem; }
         h1 { font-size: 2.5rem; color: #fff; }
         
-        section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+        section { margin-bottom: 6rem; scroll-margin-top: 2rem; }
         
-        h2 {
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 0.5rem;
-        }
-
-        h3 { color: #fff; margin: 1.5rem 0 1rem 0; font-size: 1.3rem; }
+        h2 { font-size: 1.8rem; color: var(--accent); margin-bottom: 1.5rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        h3 { color: #fff; margin: 2rem 0 1rem 0; font-size: 1.3rem; border-left: 4px solid var(--accent); padding-left: 10px; }
+        h4 { color: var(--text-muted); margin-top: 1rem; font-size: 1.1rem; }
 
         p { margin-bottom: 1rem; color: var(--text-muted); }
 
         /* --- CARDS & GRIDS --- */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+        
         .card {
-            background-color: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            transition: all 0.2s;
+            background-color: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid #334155;
         }
-        .card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-        /* --- THEORY COMPONENTS --- */
-        .concept-box {
-            border-left: 4px solid var(--purple);
-            background: rgba(139, 92, 246, 0.1);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 0 8px 8px 0;
+        /* --- TOOL MANUALS (NEW) --- */
+        .manual-box {
+            background: #111827; border: 1px solid #374151; border-radius: 6px; padding: 1rem; margin-top: 1rem;
         }
         
-        .concept-title { font-weight: bold; color: #fff; display: block; margin-bottom: 0.5rem; }
-
-        /* Pyramid of Pain */
-        .pyramid-container { display: flex; flex-direction: column; gap: 5px; margin: 2rem 0; }
-        .pyramid-level {
-            text-align: center;
+        .cmd-block {
+            background-color: var(--code-bg);
+            color: var(--success);
+            font-family: 'Consolas', 'Monaco', monospace;
             padding: 10px;
-            font-weight: bold;
-            color: #000; /* Texto negro para contraste */
             border-radius: 4px;
-            position: relative;
+            margin: 10px 0;
+            border-left: 3px solid var(--success);
+            font-size: 0.9rem;
+            overflow-x: auto;
         }
-        /* Colores de la pirámide */
-        .lvl-1 { background: #ef4444; color: white; width: 30%; margin: 0 auto; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); padding-top: 25px;} /* TTPs */
-        .lvl-1-box { background: #ef4444; color: white; width: 40%; margin: 0 auto; } 
-        .lvl-2 { background: #f97316; width: 50%; margin: 0 auto; } /* Tools */
-        .lvl-3 { background: #eab308; width: 60%; margin: 0 auto; } /* Artifacts */
-        .lvl-4 { background: #22d3ee; width: 70%; margin: 0 auto; } /* Domain */
-        .lvl-5 { background: #10b981; width: 80%; margin: 0 auto; } /* IP */
-        .lvl-6 { background: #3b82f6; width: 90%; margin: 0 auto; } /* Hash */
+
+        .instruction-step { margin-bottom: 10px; font-size: 0.95rem; }
+        .instruction-step strong { color: #fff; }
 
         /* --- TABLES --- */
         table { width: 100%; border-collapse: collapse; background-color: var(--card-bg); border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
         th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #334155; }
         th { background-color: #0f172a; color: var(--accent); text-transform: uppercase; font-size: 0.85rem; }
-        tr:last-child td { border-bottom: none; }
-        .code-snippet { font-family: 'Courier New', monospace; background-color: #000; padding: 3px 6px; border-radius: 4px; color: var(--accent); font-size: 0.9rem; }
-        
-        /* --- BUTTONS & TAGS --- */
-        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; font-weight: bold; width: 100%; text-align: center; margin-top: 1rem; }
-        .btn:hover { background: var(--accent-hover); }
-        .tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; font-weight: bold; margin-left: 8px; }
-        .tag-crit { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-        .tag-info { background: rgba(6, 182, 212, 0.2); color: var(--accent); }
+        .code-snippet { font-family: 'Courier New', monospace; background-color: #000; padding: 2px 6px; border-radius: 4px; color: var(--accent); font-size: 0.9rem; }
 
-        /* --- PLAYBOOKS --- */
-        .playbook-step { background: var(--card-bg); border-left: 4px solid var(--accent); padding: 1.5rem; margin-bottom: 1rem; }
-        .playbook-step.critical { border-left-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
-        .step-title { font-weight: bold; display: block; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; color: #fff; }
-        
-        .check-list li { margin-bottom: 0.8rem; display: flex; align-items: start; gap: 10px; }
-        .check-list li::before { content: "⬜"; font-size: 1rem; }
-        
+        /* --- BUTTONS --- */
+        .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 0.4rem 1rem; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; margin-top: 0.5rem;}
+        .btn:hover { background: var(--accent-hover); }
+
         /* Mobile */
         @media (max-width: 768px) {
             body { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; }
             .main-content { margin-left: 0; padding: 1.5rem; }
-            .lvl-1, .lvl-2, .lvl-3, .lvl-4, .lvl-5, .lvl-6 { width: 100% !important; }
         }
     </style>
 </head>
@@ -197,24 +141,25 @@
             <div class="profile-role">SysAdmin > SOC Analyst</div>
         </div>
         <nav>
-            <div class="nav-category">Teoría & Estrategia</div>
+            <div class="nav-category">Guías de Herramientas</div>
             <ul>
-                <li><a href="#fundamentos">🧠 Fundamentos (Conceptos)</a></li>
-                <li><a href="#frameworks">Defense Frameworks</a></li>
-                <li><a href="#pyramid">🔺 Pirámide del Dolor</a></li>
+                <li><a href="#defender">🛡️ Defender Live Response</a></li>
+                <li><a href="#cyberchef">🍳 CyberChef Recipes</a></li>
+                <li><a href="#wazuh">🐶 Wazuh / SIEM</a></li>
+                <li><a href="#anyrun">📦 Any.Run Sandbox</a></li>
             </ul>
 
-            <div class="nav-category">Operativa Diaria</div>
+            <div class="nav-category">Análisis y Triage</div>
             <ul>
-                <li><a href="#toolkit">🛠️ Toolkit (Herramientas)</a></li>
+                <li><a href="#log-analysis">📊 Cómo leer Logs</a></li>
                 <li><a href="#osint">🔍 Protocolo OSINT</a></li>
-                <li><a href="#playbooks">📖 Playbooks (SOPs)</a></li>
+                <li><a href="#playbooks">📖 Playbooks (SOP)</a></li>
             </ul>
 
-            <div class="nav-category">Técnica Profunda</div>
+            <div class="nav-category">Teoría Base</div>
             <ul>
-                <li><a href="#advanced">🥷 Detección Avanzada</a></li>
-                <li><a href="#cheatsheets">⚡ Cheat Sheets (Logs)</a></li>
+                <li><a href="#cheatsheets">⚡ Cheat Sheets</a></li>
+                <li><a href="#frameworks">Defense Frameworks</a></li>
             </ul>
         </nav>
     </div>
@@ -222,196 +167,63 @@
     <div class="main-content">
         
         <header>
-            <h1>SOC Field Manual <span style="font-size:0.5em; color:var(--accent);">v2.0 (Master Bible)</span></h1>
-            <p>Repositorio central de conocimiento, teoría y procedimientos operativos.</p>
+            <h1>SOC Analyst Bible <span style="font-size:0.5em; color:var(--accent);">v3.0</span></h1>
+            <p>Manual de procedimientos, comandos y guías de uso para operaciones de seguridad.</p>
         </header>
 
-        <section id="fundamentos">
-            <h2>🧠 Fundamentos del Analista</h2>
-            <div class="grid-3">
-                <div class="concept-box">
-                    <span class="concept-title">EVENTO (Log)</span>
-                    <p>Registro neutro. "Algo pasó". Ruido de fondo.</p>
-                    <p style="font-size:0.8rem">Ej: Usuario hace login, firewall permite tráfico.</p>
-                </div>
-                <div class="concept-box" style="border-color: var(--warning); background: rgba(245, 158, 11, 0.1);">
-                    <span class="concept-title" style="color:var(--warning)">ALERTA (Notificación)</span>
-                    <p>Evento de interés. Puede ser Falso Positivo.</p>
-                    <p style="font-size:0.8rem">Ej: 5 intentos fallidos de login. Malware bloqueado.</p>
-                </div>
-                <div class="concept-box" style="border-color: var(--danger); background: rgba(239, 68, 68, 0.1);">
-                    <span class="concept-title" style="color:var(--danger)">INCIDENTE (Acción)</span>
-                    <p>Amenaza confirmada. Violación de seguridad (CIA).</p>
-                    <p style="font-size:0.8rem">Ej: Ransomware cifrando, Exfiltración de datos.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="frameworks">
-            <h2>🛡️ Frameworks de Defensa</h2>
-            
-            <h3>NIST Cybersecurity Framework (CSF)</h3>
-            <p>El ciclo de vida completo de la seguridad.</p>
-            <table>
-                <tr>
-                    <th style="color:#3b82f6">IDENTIFY</th>
-                    <th style="color:#8b5cf6">PROTECT</th>
-                    <th style="color:#eab308">DETECT</th>
-                    <th style="color:#ef4444">RESPOND</th>
-                    <th style="color:#10b981">RECOVER</th>
-                </tr>
-                <tr>
-                    <td>Inventario, Riesgos</td>
-                    <td>Firewall, MFA, AV</td>
-                    <td>SIEM, EDR, Logs</td>
-                    <td>Aislar, Analizar</td>
-                    <td>Backups, Restore</td>
-                </tr>
-            </table>
-
-            <h3>Cyber Kill Chain (Lockheed Martin)</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fase</th>
-                        <th>Descripción</th>
-                        <th>¿Qué buscar? (Logs)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1. Reconnaissance</td>
-                        <td>El atacante investiga.</td>
-                        <td>Escaneo de puertos, visitas a LinkedIn.</td>
-                    </tr>
-                    <tr>
-                        <td>2. Delivery</td>
-                        <td>Envío del arma.</td>
-                        <td>Phishing (Email), USBs.</td>
-                    </tr>
-                    <tr>
-                        <td>3. Exploitation</td>
-                        <td>Ejecución de código.</td>
-                        <td>Procesos hijos raros (Word -> PowerShell).</td>
-                    </tr>
-                    <tr>
-                        <td>6. C2 (Command & Control)</td>
-                        <td>"Llamar a casa".</td>
-                        <td>Tráfico saliente constante a IP rara.</td>
-                    </tr>
-                    <tr>
-                        <td>7. Actions on Obj.</td>
-                        <td>El daño real.</td>
-                        <td>Cifrado masivo, subida de datos.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="pyramid">
-            <h2>🔺 La Pirámide del Dolor (CTI)</h2>
-            <p>Qué tan difícil es para el atacante si bloqueamos esto.</p>
-            
-            <div class="pyramid-container">
-                <div class="pyramid-level lvl-1-box">TTPs (Comportamientos) <br><small>Lo más difícil. Objetivo del SOC.</small></div>
-                <div class="pyramid-level lvl-2">Tools (Herramientas)</div>
-                <div class="pyramid-level lvl-3">Network / Host Artifacts</div>
-                <div class="pyramid-level lvl-4">Domain Names</div>
-                <div class="pyramid-level lvl-5">IP Addresses</div>
-                <div class="pyramid-level lvl-6">Hash Values (Lo más fácil)</div>
-            </div>
-        </section>
-
-        <section id="toolkit">
-            <h2>🛠️ Caja de Herramientas</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <div class="concept-title">Reputación Externa</div>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="https://www.virustotal.com/" target="_blank" style="color:var(--accent);">VirusTotal</a> - Hashes/IPs</li>
-                        <li style="margin-bottom:10px;"><a href="https://www.abuseipdb.com/" target="_blank" style="color:var(--accent);">AbuseIPDB</a> - IPs Atacantes</li>
-                        <li style="margin-bottom:10px;"><a href="https://talosintelligence.com/" target="_blank" style="color:var(--accent);">Talos Intelligence</a> - Reputación Cisco</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="concept-title">Análisis Dinámico & Forense</div>
-                    <ul style="list-style: none; padding:0;">
-                        <li style="margin-bottom:10px;"><a href="https://any.run/" target="_blank" style="color:var(--accent);">Any.Run</a> - Sandbox Interactivo</li>
-                        <li style="margin-bottom:10px;"><a href="https://gchq.github.io/CyberChef/" target="_blank" style="color:var(--accent);">CyberChef</a> - Decodificador Universal</li>
-                        <li style="margin-bottom:10px;"><a href="https://mxtoolbox.com/" target="_blank" style="color:var(--accent);">MXToolbox</a> - Análisis Email/DNS</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="osint">
-            <h2>🔍 Protocolo de Investigación (OSINT)</h2>
-            <div class="playbook-step">
-                <span class="step-title" style="color:var(--accent);">1. VALIDACIÓN IP</span>
-                <p>Buscar IP en AbuseIPDB. Si Score > 50% -> <strong>Bloqueo Inmediato</strong>.</p>
-            </div>
-            <div class="playbook-step">
-                <span class="step-title" style="color:var(--accent);">2. PROPIEDAD (CONTEXTO)</span>
-                <p>¿ISP Residencial (Casa) o Hosting (Data Center)?</p>
-                <p>Nadie trabaja desde un servidor de AWS/DigitalOcean. Si ves eso -> <strong>VPN/Proxy hostil</strong>.</p>
-            </div>
-            <div class="playbook-step">
-                <span class="step-title" style="color:var(--accent);">3. RELACIONES (C2)</span>
-                <p>VirusTotal > Pestaña 'Relations'. ¿Se ha comunicado con archivos maliciosos?</p>
-            </div>
-        </section>
-
-        <section id="playbooks">
-            <h2>📖 Playbooks Operativos (SOP)</h2>
-            
-            <div class="card" style="margin-bottom: 2rem;">
-                <h3 style="margin-top:0; color:var(--accent);">SOP-001: Malware / Ransomware</h3>
-                <div class="playbook-step critical">
-                    <span class="step-title">FASE DE CONTENCIÓN (NO APAGAR)</span>
-                    <ul class="check-list">
-                        <li><strong>NO APAGAR</strong> el equipo (Preservar RAM).</li>
-                        <li><strong>AISLAR</strong> red: Usar EDR "Isolate" o quitar cable ethernet.</li>
-                        <li>Si es Ransomware confirmado: Desconectar también discos USB/Backups conectados.</li>
-                    </ul>
-                </div>
-                <div class="playbook-step">
-                    <span class="step-title">FASE DE ANÁLISIS</span>
-                    <ul class="check-list">
-                        <li>Obtener Hash del proceso: <span class="code-snippet">Get-FileHash mal.exe</span></li>
-                        <li>Identificar "Paciente Cero" (¿Quién fue el primero?).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3 style="margin-top:0; color:var(--accent);">SOP-002: Phishing Reportado</h3>
-                <div class="playbook-step">
-                    <span class="step-title">TRIAGE INICIAL</span>
-                    <ul class="check-list">
-                        <li>Analizar Cabeceras (SPF/DKIM) en MXToolbox.</li>
-                        <li>No hacer clic en enlaces. Usar <strong>UrlScan.io</strong> para ver la web.</li>
-                        <li>¿El usuario introdujo credenciales? -> <strong>Reset Password + Revoke Sessions</strong>.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="advanced">
-            <h2>🥷 Técnicas de Detección Avanzada</h2>
+        <section id="defender">
+            <h2>🛡️ Microsoft Defender: Live Response</h2>
+            <p>Guía de comandos para investigar un equipo remoto sin interrumpir al usuario.</p>
             
             <div class="grid-2">
                 <div class="card">
-                    <div class="concept-title">PowerShell Ofuscado (Base64)</div>
-                    <p>Los atacantes usan Base64 para ocultar comandos.</p>
-                    <p><strong>Síntoma:</strong> <span class="code-snippet">powershell -e aBgY...</span></p>
-                    <p><strong>Solución:</strong> Activar GPO <em>"Script Block Logging"</em>.</p>
-                    <p><strong>Log Clave:</strong> Event ID <strong>4104</strong> (Muestra el código descifrado).</p>
+                    <h4>1. Conectarse al Equipo</h4>
+                    <p class="instruction-step">1. Ve al portal de Defender (security.microsoft.com).</p>
+                    <p class="instruction-step">2. Busca el dispositivo y entra en su página.</p>
+                    <p class="instruction-step">3. Pulsa los tres puntos (...) y elige <strong>Initiate Live Response</strong>.</p>
+                    
+                    <h4>2. Comandos de Investigación</h4>
+                    <div class="manual-box">
+                        <p class="instruction-step"><strong>Ver procesos activos:</strong></p>
+                        <div class="cmd-block">processes</div>
+                        
+                        <p class="instruction-step"><strong>Ver conexiones de red (Netstat):</strong></p>
+                        <div class="cmd-block">netstat</div>
+                        
+                        <p class="instruction-step"><strong>Buscar un archivo sospechoso:</strong></p>
+                        <div class="cmd-block">findfile name="factura.exe"</div>
+                        
+                        <p class="instruction-step"><strong>Ver tareas programadas (Persistencia):</strong></p>
+                        <div class="cmd-block">scheduledtasks</div>
+                    </div>
                 </div>
+
                 <div class="card">
-                    <div class="concept-title">Timestomping (Falsas Fechas)</div>
-                    <p>El atacante cambia la fecha del malware para que parezca antiguo.</p>
-                    <p><strong>La Verdad:</strong> El explorador miente ($STANDARD_INFO).</p>
-                    <p><strong>Detección:</strong> No ordenar por fecha. Usar Logs de Creación de Archivo o buscar por Hash.</p>
+                    <h4>3. Acciones de Remedición</h4>
+                    <div class="manual-box">
+                        <p class="instruction-step"><strong>Descargar archivo para analizarlo tú (Evidence):</strong></p>
+                        <div class="cmd-block">getfile "C:\Users\User\Downloads\malware.exe"</div>
+                        <p style="font-size:0.8rem; color:var(--warning);">*El archivo se descarga protegido con contraseña.</p>
+
+                        <p class="instruction-step"><strong>Matar un proceso malicioso:</strong></p>
+                        <div class="cmd-block">kill [PID_del_proceso]</div>
+
+                        <p class="instruction-step"><strong>Borrar archivo y remediar:</strong></p>
+                        <div class="cmd-block">remediate file "C:\path\virus.exe"</div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <section id="cyberchef">
+            <h2>🍳 CyberChef: Recetario</h2>
+            <p>Cómo decodificar texto ofuscado que encuentras en los logs.</p>
+            <a href="https://gchq.github.io/CyberChef/" target="_blank" class="btn">Abrir CyberChef</a>
+
+            <div class="grid-2" style="margin-top:1.5rem;">
+                <div class="card">
+                    <h4>Caso A: PowerShell Base64</h4>
+                    <p>Si ves: <span class="code-snippet">powershell -e JABzAD0AbgBlAHcALQBv...</span></p>
+                    <div class="manual-box">
+                        <p class="instruction-step">1. Pega el texto raro en <strong>Input</strong>.</p>
+                        <p class="instruction-step">2. Busca la operación: <strong style="color:var(--accent)">From Base64
