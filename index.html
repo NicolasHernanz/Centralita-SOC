@@ -181,6 +181,7 @@
 
             <div class="nav-category">2. Manuales Técnicos</div>
             <ul>
+                <li><a href="#wireshark-guide">🦈 Wireshark & Redes (New)</a></li>
                 <li><a href="#defender-guide">🛡️ Microsoft Defender</a></li>
                 <li><a href="#powershell-hunting">⚡ PowerShell Hunting</a></li>
                 <li><a href="#cyberchef-guide">🍳 CyberChef Avanzado</a></li>
@@ -208,7 +209,7 @@
         
         <header>
             <h1>SOC Encyclopedia</h1>
-            <p class="subtitle">Base de conocimiento operativa v7.0. Procedimientos, Teoría y Herramientas.</p>
+            <p class="subtitle">Base de conocimiento operativa v7.1. Procedimientos, Teoría y Herramientas.</p>
         </header>
 
         <section id="toolkit-rep">
@@ -286,8 +287,49 @@
             </div>
         </section>
 
+        <section id="wireshark-guide">
+            <h2>🦈 Wireshark & Análisis de Red</h2>
+            <p>Captura y análisis de paquetes. Si pasó por el cable, Wireshark lo ve.</p>
+            
+            <div class="card">
+                <h3>Filtros de Pantalla (Display Filters)</h3>
+                <p>Los filtros más usados en el día a día del analista:</p>
+                
+                <table>
+                    <thead><tr><th>Filtro</th><th>¿Para qué sirve?</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="cmd">http.request.method == POST</span></td>
+                            <td>Ver envíos de datos (Login, subida de ficheros). Busca contraseñas aquí.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd">ip.addr == 192.168.1.50</span></td>
+                            <td>Filtrar todo el tráfico de esa IP (origen o destino).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd">dns.flags.response == 0</span></td>
+                            <td>Ver qué dominios está consultando la máquina (DNS Queries).</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd">tcp.port == 445</span></td>
+                            <td>Tráfico SMB. Útil para ver movimientos laterales o WannaCry.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="cmd">frame contains "password"</span></td>
+                            <td>Buscar la palabra "password" dentro del contenido de los paquetes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <span class="box-title">Tip de Oro: "Follow TCP Stream"</span>
+                    <p>Si ves un paquete interesante, haz <strong>Clic Derecho -> Follow -> TCP Stream</strong>. Wireshark reconstruirá la conversación completa en texto legible (rojo = cliente, azul = servidor).</p>
+                </div>
+            </div>
+        </section>
+
         <section id="defender-guide">
-            <h2>2. Microsoft Defender (EDR)</h2>
+            <h2>🛡️ Microsoft Defender (EDR)</h2>
             <div class="card">
                 <h3>Comandos de Live Response</h3>
                 <table>
@@ -503,7 +545,7 @@
         </section>
         
         <footer style="margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-muted);">
-            <p>SOC Encyclopedia v7.0 (Complete Edition) | Mantenida por Nicolás</p>
+            <p>SOC Encyclopedia v7.1 (Complete Edition) | Mantenida por Nicolás</p>
         </footer>
 
     </div>
