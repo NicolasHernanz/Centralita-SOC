@@ -414,7 +414,60 @@
                 </div>
             </div>
         </section>
+        <section id="cyberchef-guide">
+            <h2>🍳 CyberChef Avanzado</h2>
+            <div class="theory-box">
+                <span class="box-title">La Navaja Suiza del Analista</span>
+                <p>Herramienta web para decodificar, desofuscar y analizar datos. Si ves texto "basura" o cifrado, mételo aquí.</p>
+                <a href="https://gchq.github.io/CyberChef/" target="_blank" class="tool-btn" style="margin-top:10px; width: fit-content; padding: 0.5rem 1rem;">Abrir CyberChef ↗</a>
+            </div>
 
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Receta 1: Limpieza de Base64 (Malware)</h3>
+                    <p>Los atacantes suelen esconder comandos en Base64 invertido o con nulos.</p>
+                    <div class="code-block">
+                        <span class="cmd">Recipe:</span><br>
+                        1. From Base64<br>
+                        2. Remove Null Bytes<br>
+                        3. Decode Text (UTF-16LE / UTF-8)
+                    </div>
+                    <p class="comment">Uso: Scripts de PowerShell codificados (`-e` o `-EncodedCommand`).</p>
+                </div>
+
+                <div class="card">
+                    <h3>Receta 2: Extracción de IOCs (Phishing)</h3>
+                    <p>Saca todas las IPs y URLs de un correo o log gigante en segundos.</p>
+                    <div class="code-block">
+                        <span class="cmd">Recipe:</span><br>
+                        1. Extract IP Addresses<br>
+                        2. Extract URLs<br>
+                        3. Defang URL (para compartir seguro)<br>
+                        4. Unique (eliminar duplicados)
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Receta 3: "Magic" (Cuando no sabes qué es)</h3>
+                <p>El módulo más potente. Intenta adivinar el cifrado o codificación automáticamente.</p>
+                <ol style="margin-left: 20px;">
+                    <li>Pega el texto raro en el Input.</li>
+                    <li>Arrastra la operación <strong>"Magic"</strong> al panel de recetas.</li>
+                    <li>Mira si detecta archivos (PDF, JPEG) o texto legible dentro de la basura.</li>
+                </ol>
+            </div>
+
+            <div class="card" style="border-left: 4px solid var(--purple);">
+                <h3>💡 XOR Brute Force (Romper cifrado simple)</h3>
+                <p>Muchos malware usan XOR con una clave simple (ej: un solo byte) para esconderse.</p>
+                <div class="code-block">
+                    <span class="cmd">Input:</span> Texto ininteligible.<br>
+                    <span class="cmd">Recipe:</span> XOR Brute Force (Key length: 1-2).<br>
+                    <span class="cmd">Output:</span> Busca en la lista palabras como "http", "This program", etc.
+                </div>
+            </div>
+        </section>
         <section id="sop-malware">
             <h2>3. Procedimientos Operativos (SOPs)</h2>
             
@@ -605,4 +658,5 @@
 
     </div>
 </body>
+
 </html>
